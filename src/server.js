@@ -1,10 +1,15 @@
 const express = require('express');
 const VoiceResponse = require('twilio').twiml.VoiceResponse;
+const debugUtil = require('./modules/debug_utils');
+require('dotenv').config()
 
 const port = process.env.PORT || 3000;
+
 const app = express();
 
-app.post('/', (_req, res) => {
+app.post('/', (req, res) => {
+    debugUtil.log('new request');
+
     const twiml = new VoiceResponse();
     twiml.say('hello world');
 

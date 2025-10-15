@@ -19,6 +19,7 @@
   "homepage": "https://github.com/SteniusJ/twilio_weather_app#readme",
   "dependencies": {
     "body-parser": "^2.2.0",
+    "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "nodemon": "^3.1.10",
     "twilio": "^5.10.3"
