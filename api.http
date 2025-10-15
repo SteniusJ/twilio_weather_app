@@ -11,7 +11,7 @@ GET {{router}}/
 GET {{router}}/mainCode/menu.xml
 
 ### 2) VOICE WEBHOOK: (POST form-encoded)
-POST {{app}}/voice
+POST {{app}}
 Content-Type: application/x-www-form-urlencoded
 
 From=%2B15551234567&To=%2B15557654321&CallSid=CA1234567890abcdef
