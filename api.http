@@ -3,15 +3,19 @@
 @app    = http://localhost:3000
 # @app  = https://<your-app-runner-id>.eu-north-1.awsapprunner.com
 
+### 1) HEALTH CHECK: (GET)
+GET {{app}}/health
 
-# Router
+### Router
 GET {{router}}/
 
 ### ROUTER menu file 
 GET {{router}}/mainCode/menu.xml
 
-### 2) VOICE WEBHOOK: (POST form-encoded)
-POST {{app}}
-Content-Type: application/x-www-form-urlencoded
+### Voice Twilio Webhook (POST)
 
-From=%2B15551234567&To=%2B15557654321&CallSid=CA1234567890abcdef
+POST {{app}}/
+Content-Type: application/x-www-form-urlencoded
+Accept: application/xml
+
+From=%2B15551234567&To=%2B15557654321

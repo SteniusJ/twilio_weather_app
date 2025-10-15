@@ -1,16 +1,13 @@
 const express = require('express');
-const VoiceResponse = require('twilio').twiml.VoiceResponse;
-
 const app = express();
 
+app.use(express.urlencoded({ extended: false }));
+
 app.post('/', (req, res) => {
-    const twiml = new VoiceResponse();
-    twiml.say('Hello World');
-
-    res.type('text/xml');
-    res.send(twiml.toString());
+  console.log('hit / voice webhook, req.body');
+  res.set('Content-Type', 'application/xml').status(200).send(responseXml);
 });
 
-app.listen(3000, () => {
-    console.log('app listening on port: 3000')
-});
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log('app listening on port:', port));
