@@ -1,16 +1,20 @@
 const express = require('express');
 const VoiceResponse = require('twilio').twiml.VoiceResponse;
+const debugUtil = require('./modules/debug_utils');
+require('dotenv').config()
+
+const port = process.env.PORT || 3000;
 
 const app = express();
 
 app.post('/', (req, res) => {
+    debugUtil.log('new request');
+
     const twiml = new VoiceResponse();
-    twiml.say('Hello World');
+    twiml.say('hello world');
 
     res.type('text/xml');
-    res.send(twiml.toString());
+    res.status(200).send(twiml.toString());
 });
 
-app.listen(3000, () => {
-    console.log('app listening on port: 3000')
-});
+app.listen(port, () => console.log('app listening on port:', port));
