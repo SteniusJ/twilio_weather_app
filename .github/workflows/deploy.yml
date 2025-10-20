@@ -15,6 +15,7 @@ jobs:
         PRIVATE_KEY: ${{ secrets.EC2_PRIVATE_KEY }}
         HOST: ${{ secrets.EC2_HOST }}
         USER: ${{ secrets.EC2_USER }}
+        OW_API_KEY: ${{ secrets.OW_API_KEY }}
       run: |
         echo "$PRIVATE_KEY" > github-ec2.pem && chmod 600 github-ec2.pem
         ssh -o StrictHostKeyChecking=no -i github-ec2.pem ${USER}@${HOST} '
@@ -35,9 +36,13 @@ jobs:
           cd "$REPO_DIR"
         fi
 
+        echo "Creating enviroment variables..."
+        rm .env
+        echo "OW_API_KEY=$OW_API_KEY" > .env
+
         echo "Building new image..."
         docker build . -t twilio_weather_app
 
         echo "Starting new image..."
-        docker run -d -p 80:3000 twilio_weather_app
+        docker run -d -p 80:3000 --env-file .env twilio_weather_app
         '
