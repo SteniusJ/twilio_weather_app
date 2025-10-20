@@ -19,10 +19,12 @@ jobs:
       run: |
         echo "$PRIVATE_KEY" > github-ec2.pem && chmod 600 github-ec2.pem
         ssh -o StrictHostKeyChecking=no -i github-ec2.pem ${USER}@${HOST} '
+        set -e
+
         echo "Current directory: $(pwd)"
 
         echo "Closing/removing previous container..."
-        docker rm $(docker stop $(docker ps -a -q --filter ancestor=twilio_weather_app))
+        docker rm $(docker stop $(docker ps -a -q --filter ancestor=twilio_weather_app)) || true
 
         REPO_URL="https://github.com/SteniusJ/twilio_weather_app.git"
         BRANCH="main"
