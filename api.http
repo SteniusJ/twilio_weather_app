@@ -1,19 +1,21 @@
-
 @router = http://testforexersise.s3-website.eu-north-1.amazonaws.com
-@app    = http://localhost:3000
-# @app  = https://<your-app-runner-id>.eu-north-1.awsapprunner.com
+@app = http://localhost:3000
+# @app = https://<your-app-runner-id>.eu-north-1.awsapprunner.com
+
 
 ### 1) HEALTH CHECK: (GET)
 GET {{app}}/health
 
+
 ### Router
 GET {{router}}/
 
-### ROUTER menu file 
+
+### ROUTER menu file
 GET {{router}}/mainCode/menu.xml
 
-### Voice Twilio Webhook (POST)
 
+### Voice Twilio Webhook (POST)
 POST {{app}}/
 Content-Type: application/x-www-form-urlencoded
 Accept: application/xml
