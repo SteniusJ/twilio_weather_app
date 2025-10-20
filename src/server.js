@@ -4,6 +4,10 @@ const debugUtil = require('./modules/debug_utils');
 require('dotenv').config();
 
 const port = process.env.PORT || 3000;
+const OW_API_KEY = process.env.OW_API_KEY || undefined;
+
+if (OW_API_KEY === undefined) throw new Error('No API key found in .env');
+
 const app = express();
 
 app.post('/', async (req, res) => {
@@ -13,7 +17,7 @@ app.post('/', async (req, res) => {
 
     try {
         const resp = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?lat=60.16852&lon=24.93545&units=metric&appid=${process.env.OW_API_KEY}`,
+            `https://api.openweathermap.org/data/2.5/weather?lat=60.16852&lon=24.93545&units=metric&appid=${OW_API_KEY}`,
             { method: 'GET' }
         );
 
