@@ -7,8 +7,14 @@ const port = process.env.PORT || 3000;
 
 const app = express();
 
-app.post('/', (req, res) => {
+app.post('/', async (req, res) => {
     debugUtil.log('new request');
+
+    const resp = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=60.16852&lon=24.93545&appid=${process.env.OW_API_KEY}`, {
+        method: "GET"
+    });
+
+    console.log(resp);
 
     const twiml = new VoiceResponse();
     twiml.say('hello world');
