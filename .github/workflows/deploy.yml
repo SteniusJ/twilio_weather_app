@@ -44,5 +44,5 @@ jobs:
         docker build . -t twilio_weather_app
 
         echo "Starting new image..."
-        docker run -d -p 80:3000 twilio_weather_app
+        docker run -d -p 80:3000 --env-file .env twilio_weather_app
         '
