@@ -10,7 +10,7 @@ const app = express();
 app.post('/', async (req, res) => {
     debugUtil.log('new request');
 
-    const resp = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=60.16852&lon=24.93545&appid=${process.env.OW_API_KEY}`, {
+    const resp = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=60.16852&lon=24.93545&units=metric&appid=${process.env.OW_API_KEY}`, {
         method: "GET"
     });
 
