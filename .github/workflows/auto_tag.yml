@@ -2,8 +2,7 @@ name: Auto Tag
 
 on:
   push:
-  branches:
-    - main
+  branches: [ main ]
 
 jobs:
   tag:
