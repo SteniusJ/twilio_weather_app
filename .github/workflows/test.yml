@@ -17,5 +17,8 @@ jobs:
       - name: Install dependencies
         run: npm i
 
+      - name: Copy Env Variables
+        run: echo OW_API_KEY="${{ secrets.OW_API_KEY }}" > .env
+
       - name: Run Test
         run: npm run test
