@@ -1,0 +1,24 @@
+name: Test Pull Request
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Node
+        uses: actions/setup-node@v5
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Copy Env Variables
+        run: echo OW_API_KEY="${{ secrets.OW_API_KEY }}" > .env
+
+      - name: Run Test
+        run: npm run test
