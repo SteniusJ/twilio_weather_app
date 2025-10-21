@@ -6,7 +6,7 @@
   "scripts": {
     "start": "pm2-runtime start src/server.js",
     "dev": "nodemon -L src/server.js",
-    "test": "mocha"
+    "test": "mocha --exit"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,9 @@
   "dependencies": {
     "assert": "^2.1.0",
     "body-parser": "^2.2.0",
+    "chai": "^6.2.0",
+    "chai-http": "^5.1.2",
+    "chai-xml": "^0.4.1",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "mocha": "^11.7.4",
