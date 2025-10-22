@@ -21,7 +21,7 @@ app.post('/', async (req, res) => {
             { method: 'GET' }
         );
 
-        if (!resp.ok) throw new Error(`Weather API returned status ${resp.status}`);
+        if (!resp.ok) return res.status(404);
 
         const data = await resp.json();
 
